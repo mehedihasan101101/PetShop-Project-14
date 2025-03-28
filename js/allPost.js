@@ -76,7 +76,7 @@ async function bringAllCards(pet) {
         document.getElementById("btn-Sort-All-Data").addEventListener('click', function () {
             if (!isSorted) {
                 sortedArray = [...pet].sort((a, b) => a.price - b.price); //data sorted in ascending order
-                container.innerHTML = ``;
+                container.innerHTML =``;
                 renderPets(sortedArray);
                 isSorted = true;
             }
