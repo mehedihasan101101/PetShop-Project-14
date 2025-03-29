@@ -1,7 +1,7 @@
 //Global Variables
 const container = document.getElementById("Container-All-Pets") //All pet Card div stored
-let reloadAllPets = false;
-let allPetCopy = [];
+reloadAllPets = false;
+
 
 // Function to fetch data from api.
 async function loadAllPets() {
@@ -10,7 +10,6 @@ async function loadAllPets() {
         const res = await fetch("https://openapi.programming-hero.com/api/peddy/pets");
         const allPets = await res.json();
         bringAllCards(allPets.pets); // this function render all pets
-        allPetCopy = [...allPets.pets];
         console.log(allPetCopy);
 
 
@@ -39,53 +38,29 @@ async function renderByCategory(btnId) {
             let allDataMain = allData.data;
 
 
-           //this if condition 
+            //this if condition 
             if (allDataMain.length == 0) {
 
-
-                if (!reloadAllPets) {
-                    container.className = "";
-                    container.classList.add("w-full");
-                    container.innerHTML =
-                        `                                        
+                container.className = "";
+                container.classList.add("w-full");
+                container.innerHTML =
+                    `                                        
                   <div class=" bg-[#f8f8f8] w-full flex justify-center flex-col items-center lg:p-40 md:p-20 p-5 md:space-y-5 space-y-2 shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)]">
                      <img src="assets/error.webp" alt="">
                      <h1 class="text-[#131313] lg:text-5xl md:text-3xl text-xl  font-extrabold">No Information Available</h1>
                      <p class="text-center">Currently, no information is available. Please check back later for updates or try different category</p>
                    </div>            
                     `;
-                    Btn.innerHTML = "All Pets";
-                    reloadAllPets = true;
-
-
-                }
-                else {
-                    container.innerHTML = ``;
-
-                    bringAllCards(allPetCopy);
-
-                    reloadAllPets = false;
-                    Btn.innerHTML = `  <img src="assets/dog.png" class="lg:pr-5 lg:w-auto w-10 pr-2" alt="">Dogs</a>`;
-                }
 
             }
+
             else {
 
+                container.innerHTML = ``;
+                bringAllCards(allDataMain);
 
-                if (!reloadAllPets) {
-                    Btn.innerText = "All Pets";
-                    container.innerHTML = ``;
-                    bringAllCards(allDataMain);
-                    reloadAllPets = true;
-                }
-                else {
-                    container.innerHTML = ``;
 
-                    bringAllCards(allPetCopy);
-                    Btn.innerHTML = ` <img src="assets/dog.png" class="lg:pr-5 lg:w-auto w-10 pr-2" alt="">Dogs</a>`;
-                    reloadAllPets = false;
 
-                }
             }
         }
 
@@ -102,49 +77,25 @@ async function renderByCategory(btnId) {
             if (allDataMain.length == 0) {
 
 
-                if (!reloadAllPets) {
-                    container.className = "";
-                    container.classList.add("w-full");
-                    container.innerHTML =
-                        `                                        
+
+                container.className = "";
+                container.classList.add("w-full");
+                container.innerHTML =
+                    `                                        
                   <div class=" bg-[#f8f8f8] w-full flex justify-center flex-col items-center lg:p-40 md:p-20 p-5 md:space-y-5 space-y-2 shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)]">
                      <img src="assets/error.webp" alt="">
                      <h1 class="text-[#131313] lg:text-5xl md:text-3xl text-xl  font-extrabold">No Information Available</h1>
                      <p class="text-center">Currently, no information is available. Please check back later for updates or try different category</p>
                    </div>            
                     `;
-                    Btn.innerHTML = "All Pets";
-                    reloadAllPets = true;
 
-
-                }
-                else {
-                    container.innerHTML = ``;
-
-                    bringAllCards(allPetCopy);
-
-                    reloadAllPets = false;
-                    Btn.innerHTML = `  <img src="assets/cat.png" class="lg:pr-5 lg:w-auto w-10 pr-2" alt="">Cats</a>`;
-                }
 
             }
             else {
 
+                container.innerHTML = ``;
+                bringAllCards(allDataMain);
 
-                if (!reloadAllPets) {
-                    Btn.innerText = "All Pets";
-                    container.innerHTML = ``;
-                    bringAllCards(allDataMain);
-                    reloadAllPets = true;
-                }
-                else {
-                    container.innerHTML = ``;
-
-                    bringAllCards(allPetCopy);
-                    Btn.innerHTML = ` <img src="assets/cat.png" class="lg:pr-5 lg:w-auto w-10 pr-2" alt="">Cats</a>`;
-                    reloadAllPets = false;
-
-                }
             }
 
         }
@@ -161,54 +112,30 @@ async function renderByCategory(btnId) {
             if (allDataMain.length == 0) {
 
 
-                if (!reloadAllPets) {
-                    container.className = "";
-                    container.classList.add("w-full");
-                    container.innerHTML =
-                        `                                        
-                  <div class=" bg-[#f8f8f8] w-full flex justify-center flex-col items-center lg:p-40 md:p-20 p-5 md:space-y-5 space-y-2 shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)]">
-                     <img src="assets/error.webp" alt="">
-                     <h1 class="text-[#131313] lg:text-5xl md:text-3xl text-xl  font-extrabold">No Information Available</h1>
-                     <p class="text-center">Currently, no information is available. Please check back later for updates or try different category</p>
-                   </div>            
-                    `;
-                    Btn.innerHTML = "All Pets";
-                    reloadAllPets = true;
 
+                container.className = "";
+                container.classList.add("w-full");
+                container.innerHTML =
+                    `                                        
+              <div class=" bg-[#f8f8f8] w-full flex justify-center flex-col items-center lg:p-40 md:p-20 p-5 md:space-y-5 space-y-2 shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)]">
+                 <img src="assets/error.webp" alt="">
+                 <h1 class="text-[#131313] lg:text-5xl md:text-3xl text-xl  font-extrabold">No Information Available</h1>
+                 <p class="text-center">Currently, no information is available. Please check back later for updates or try different category</p>
+               </div>            
+                `;
 
-                }
-                else {
-                    container.innerHTML = ``;
-
-                    bringAllCards(allPetCopy);
-
-                    reloadAllPets = false;
-                    Btn.innerHTML = `  <img src="assets/rabbit.png" class="lg:pr-5 lg:w-auto w-10 pr-2" alt="">Rabbits</a>`;
-                }
 
             }
             else {
 
+                container.innerHTML = ``;
+                bringAllCards(allDataMain);
 
-                if (!reloadAllPets) {
-                    Btn.innerText = "All Pets";
-                    container.innerHTML = ``;
-                    bringAllCards(allDataMain);
-                    reloadAllPets = true;
-                }
-                else {
-                    container.innerHTML = ``;
-
-                    bringAllCards(allPetCopy);
-                    Btn.innerHTML = `<img src="assets/rabbit.png" class="lg:pr-5 lg:w-auto w-10 pr-2" alt="">Rabbits</a>`;
-                    reloadAllPets = false;
-
-                }
             }
         }
         //if the button is for bird category 
         else if (btnId == "Btn-Bird") {
-         // Update the API origin link dynamically for the bird category
+            // Update the API origin link dynamically for the bird category
             apiOrigin = apiOrigin.replace('dog', 'bird');
             let data = await fetch(apiOrigin);
             let allData = await data.json()
@@ -219,51 +146,26 @@ async function renderByCategory(btnId) {
             if (allDataMain.length == 0) {
 
 
-                if (!reloadAllPets) {
-                    container.className = "";
-                    container.classList.add("w-full");
-                    container.innerHTML =
-                        `                                        
-                  <div class=" bg-[#f8f8f8] w-full flex justify-center flex-col items-center lg:p-40 md:p-20 p-5 md:space-y-5 space-y-2 shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)]">
-                     <img src="assets/error.webp" alt="">
-                     <h1 class="text-[#131313] lg:text-5xl md:text-3xl text-xl  font-extrabold">No Information Available</h1>
-                     <p class="text-center">Currently, no information is available. Please check back later for updates or try different category</p>
-                   </div>            
-                    `;
-                    Btn.innerHTML = "All Pets";
-                    reloadAllPets = true;
 
+                container.className = "";
+                container.classList.add("w-full");
+                container.innerHTML =
+                    `                                        
+              <div class=" bg-[#f8f8f8] w-full flex justify-center flex-col items-center lg:p-40 md:p-20 p-5 md:space-y-5 space-y-2 shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)]">
+                 <img src="assets/error.webp" alt="">
+                 <h1 class="text-[#131313] lg:text-5xl md:text-3xl text-xl  font-extrabold">No Information Available</h1>
+                 <p class="text-center">Currently, no information is available. Please check back later for updates or try different category</p>
+               </div>            
+                `;
 
-                }
-                else {
-                    container.innerHTML = ``;
-
-                    bringAllCards(allPetCopy);
-
-                    reloadAllPets = false;
-                    Btn.innerHTML = `<img src="assets/parrot.png" class="lg:pr-5 lg:w-auto w-10 pr-2" alt="">Birds</a>`;
-                }
 
             }
             else {
 
+                container.innerHTML = ``;
+                bringAllCards(allDataMain);
 
-                if (!reloadAllPets) {
-                    Btn.innerText = "All Pets";
-                    container.innerHTML = ``;
-                    bringAllCards(allDataMain);
-                    reloadAllPets = true;
-                }
-                else {
-                    container.innerHTML = ``;
-
-                    bringAllCards(allPetCopy);
-
-                    reloadAllPets = false;
-                    Btn.innerHTML = ` <img src="assets/parrot.png" class="lg:pr-5 lg:w-auto w-10 pr-2" alt="">Birds</a>`;
-                }
             }
-
 
         }
     }
