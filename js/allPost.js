@@ -1,3 +1,8 @@
+//Global Variables
+const container = document.getElementById("Container-All-Pets") //All pet Card div stored
+let reloadAllPets = false;
+let allPetCopy = [];
+
 // Function to fetch data from api.
 async function loadAllPets() {
     try {
@@ -5,6 +10,10 @@ async function loadAllPets() {
         const res = await fetch("https://openapi.programming-hero.com/api/peddy/pets");
         const allPets = await res.json();
         bringAllCards(allPets.pets); // this function render all pets
+        allPetCopy = [...allPets.pets];
+        console.log(allPetCopy);
+
+
     } catch (err) {
         console.error("Error Happened:", err)
     }
@@ -13,12 +22,268 @@ async function loadAllPets() {
 
 loadAllPets()
 
+// this function render data based on category
+async function renderByCategory(btnId) {
+    try {
+
+        // Get the button element for the selected category
+        const Btn = document.getElementById(btnId);
+
+        // Define the initial API link for dynamic category usage
+        let apiOrigin = 'https://openapi.programming-hero.com/api/peddy/category/dog';
+
+        //if the button is for dog category 
+        if (btnId == "Btn-Dog") {
+            let data = await fetch(apiOrigin);
+            let allData = await data.json();
+            let allDataMain = allData.data;
+
+
+           //this if condition 
+            if (allDataMain.length == 0) {
+
+
+                if (!reloadAllPets) {
+                    container.className = "";
+                    container.classList.add("w-full");
+                    container.innerHTML =
+                        `                                        
+                  <div class=" bg-[#f8f8f8] w-full flex justify-center flex-col items-center lg:p-40 md:p-20 p-5 md:space-y-5 space-y-2 shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)]">
+                     <img src="assets/error.webp" alt="">
+                     <h1 class="text-[#131313] lg:text-5xl md:text-3xl text-xl  font-extrabold">No Information Available</h1>
+                     <p class="text-center">Currently, no information is available. Please check back later for updates or try different category</p>
+                   </div>            
+                    `;
+                    Btn.innerHTML = "All Pets";
+                    reloadAllPets = true;
+
+
+                }
+                else {
+                    container.innerHTML = ``;
+
+                    bringAllCards(allPetCopy);
+
+                    reloadAllPets = false;
+                    Btn.innerHTML = `  <img src="assets/dog.png" class="lg:pr-5 lg:w-auto w-10 pr-2" alt="">Dogs</a>`;
+                }
+
+            }
+            else {
+
+
+                if (!reloadAllPets) {
+                    Btn.innerText = "All Pets";
+                    container.innerHTML = ``;
+                    bringAllCards(allDataMain);
+                    reloadAllPets = true;
+                }
+                else {
+                    container.innerHTML = ``;
+
+                    bringAllCards(allPetCopy);
+                    Btn.innerHTML = ` <img src="assets/dog.png" class="lg:pr-5 lg:w-auto w-10 pr-2" alt="">Dogs</a>`;
+                    reloadAllPets = false;
+
+                }
+            }
+        }
+
+        //if the button is for Cat category 
+        else if (btnId == "Btn-Cat") {
+            // Update the API origin link dynamically for the cat category
+            apiOrigin = apiOrigin.replace("dog", "cat");
+            let data = await fetch(apiOrigin);
+            let allData = await data.json();
+            let allDataMain = allData.data;
+
+
+
+            if (allDataMain.length == 0) {
+
+
+                if (!reloadAllPets) {
+                    container.className = "";
+                    container.classList.add("w-full");
+                    container.innerHTML =
+                        `                                        
+                  <div class=" bg-[#f8f8f8] w-full flex justify-center flex-col items-center lg:p-40 md:p-20 p-5 md:space-y-5 space-y-2 shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)]">
+                     <img src="assets/error.webp" alt="">
+                     <h1 class="text-[#131313] lg:text-5xl md:text-3xl text-xl  font-extrabold">No Information Available</h1>
+                     <p class="text-center">Currently, no information is available. Please check back later for updates or try different category</p>
+                   </div>            
+                    `;
+                    Btn.innerHTML = "All Pets";
+                    reloadAllPets = true;
+
+
+                }
+                else {
+                    container.innerHTML = ``;
+
+                    bringAllCards(allPetCopy);
+
+                    reloadAllPets = false;
+                    Btn.innerHTML = `  <img src="assets/cat.png" class="lg:pr-5 lg:w-auto w-10 pr-2" alt="">Cats</a>`;
+                }
+
+            }
+            else {
+
+
+                if (!reloadAllPets) {
+                    Btn.innerText = "All Pets";
+                    container.innerHTML = ``;
+                    bringAllCards(allDataMain);
+                    reloadAllPets = true;
+                }
+                else {
+                    container.innerHTML = ``;
+
+                    bringAllCards(allPetCopy);
+                    Btn.innerHTML = ` <img src="assets/cat.png" class="lg:pr-5 lg:w-auto w-10 pr-2" alt="">Cats</a>`;
+                    reloadAllPets = false;
+
+                }
+            }
+
+        }
+        //if the button is for Rabbit category 
+        else if (btnId == "Btn-Rabbit") {
+            // Update the API origin link dynamically for the rabbit category
+            apiOrigin = apiOrigin.replace("dog", "rabbit");
+            let data = await fetch(apiOrigin);
+            let allData = await data.json();
+            let allDataMain = allData.data;
+
+
+
+            if (allDataMain.length == 0) {
+
+
+                if (!reloadAllPets) {
+                    container.className = "";
+                    container.classList.add("w-full");
+                    container.innerHTML =
+                        `                                        
+                  <div class=" bg-[#f8f8f8] w-full flex justify-center flex-col items-center lg:p-40 md:p-20 p-5 md:space-y-5 space-y-2 shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)]">
+                     <img src="assets/error.webp" alt="">
+                     <h1 class="text-[#131313] lg:text-5xl md:text-3xl text-xl  font-extrabold">No Information Available</h1>
+                     <p class="text-center">Currently, no information is available. Please check back later for updates or try different category</p>
+                   </div>            
+                    `;
+                    Btn.innerHTML = "All Pets";
+                    reloadAllPets = true;
+
+
+                }
+                else {
+                    container.innerHTML = ``;
+
+                    bringAllCards(allPetCopy);
+
+                    reloadAllPets = false;
+                    Btn.innerHTML = `  <img src="assets/rabbit.png" class="lg:pr-5 lg:w-auto w-10 pr-2" alt="">Rabbits</a>`;
+                }
+
+            }
+            else {
+
+
+                if (!reloadAllPets) {
+                    Btn.innerText = "All Pets";
+                    container.innerHTML = ``;
+                    bringAllCards(allDataMain);
+                    reloadAllPets = true;
+                }
+                else {
+                    container.innerHTML = ``;
+
+                    bringAllCards(allPetCopy);
+                    Btn.innerHTML = `<img src="assets/rabbit.png" class="lg:pr-5 lg:w-auto w-10 pr-2" alt="">Rabbits</a>`;
+                    reloadAllPets = false;
+
+                }
+            }
+        }
+        //if the button is for bird category 
+        else if (btnId == "Btn-Bird") {
+         // Update the API origin link dynamically for the bird category
+            apiOrigin = apiOrigin.replace('dog', 'bird');
+            let data = await fetch(apiOrigin);
+            let allData = await data.json()
+            let allDataMain = allData.data;
+
+
+
+            if (allDataMain.length == 0) {
+
+
+                if (!reloadAllPets) {
+                    container.className = "";
+                    container.classList.add("w-full");
+                    container.innerHTML =
+                        `                                        
+                  <div class=" bg-[#f8f8f8] w-full flex justify-center flex-col items-center lg:p-40 md:p-20 p-5 md:space-y-5 space-y-2 shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)]">
+                     <img src="assets/error.webp" alt="">
+                     <h1 class="text-[#131313] lg:text-5xl md:text-3xl text-xl  font-extrabold">No Information Available</h1>
+                     <p class="text-center">Currently, no information is available. Please check back later for updates or try different category</p>
+                   </div>            
+                    `;
+                    Btn.innerHTML = "All Pets";
+                    reloadAllPets = true;
+
+
+                }
+                else {
+                    container.innerHTML = ``;
+
+                    bringAllCards(allPetCopy);
+
+                    reloadAllPets = false;
+                    Btn.innerHTML = `<img src="assets/parrot.png" class="lg:pr-5 lg:w-auto w-10 pr-2" alt="">Birds</a>`;
+                }
+
+            }
+            else {
+
+
+                if (!reloadAllPets) {
+                    Btn.innerText = "All Pets";
+                    container.innerHTML = ``;
+                    bringAllCards(allDataMain);
+                    reloadAllPets = true;
+                }
+                else {
+                    container.innerHTML = ``;
+
+                    bringAllCards(allPetCopy);
+
+                    reloadAllPets = false;
+                    Btn.innerHTML = ` <img src="assets/parrot.png" class="lg:pr-5 lg:w-auto w-10 pr-2" alt="">Birds</a>`;
+                }
+            }
+
+
+        }
+    }
+    catch (err) {
+        console.error("Error Happened:", err)
+    }
+
+
+
+}
+
+
+
 async function bringAllCards(pet) {
 
     try {
-        const container = document.getElementById("Container-All-Pets") //All pet Card div stored
+
         const originalPetsData = [...pet];//a copy of original allPetsData
         let isSorted = false; //Indicator of data has been sorted or not
+        container.classList.add("grid", "lg:grid-cols-3", "md:grid-cols-2", "gap-5"); //class dynamically added to handle avoid overwriting of class
 
         // this function render all data in the all pet container 
         function renderPets(petsArr) {
@@ -41,7 +306,7 @@ async function bringAllCards(pet) {
                                     d="M6 1H1v14h5zm9 0h-5v5h5zm0 9v5h-5v-5zM0 1a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1zm9 0a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1h-5a1 1 0 0 1-1-1zm1 8a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1v-5a1 1 0 0 0-1-1z" />
                             </svg>
                             <p>Breed: <span class="pl-2 text-[16px] text-[#131313]">${pets.breed === null || pets.breed
-                                    === undefined ? pets.breed = "Unavailable" : pets.breed}</span></p>
+                        === undefined ? pets.breed = "Unavailable" : pets.breed}</span></p>
                         </div>
 
                         <div class="flex items-center gap-2">
@@ -51,8 +316,8 @@ async function bringAllCards(pet) {
                                     d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M2 2a1 1 0 0 0-1 1v1h14V3a1 1 0 0 0-1-1zm13 3H1v9a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1z" />
                             </svg>
                             <p>Birth:<span class="pl-2 text-[16px] text-[#131313] ">${pets.date_of_birth == null ||
-                                    pets.date_of_birth == undefined ? pets.date_of_birth = "Unavailable" :
-                                    pets.date_of_birth}</span></p>
+                        pets.date_of_birth == undefined ? pets.date_of_birth = "Unavailable" :
+                        pets.date_of_birth}</span></p>
                         </div>
 
                         <div class="flex items-center gap-2">
@@ -62,7 +327,7 @@ async function bringAllCards(pet) {
                                     d="M8 1a4 4 0 1 0 0 8 4 4 0 0 0 0-8M3 5a5 5 0 1 1 5.5 4.975V12h2a.5.5 0 0 1 0 1h-2v2.5a.5.5 0 0 1-1 0V13h-2a.5.5 0 0 1 0-1h2V9.975A5 5 0 0 1 3 5" />
                             </svg>
                             <p>Gender:<span class="pl-2 text-[16px] text-[#131313] ">${pets.gender == null || pet.gender
-                                    == undefined ? pet.gender = "Unavailable" : pets.gender}</span></p>
+                        == undefined ? pet.gender = "Unavailable" : pets.gender}</span></p>
                         </div>
 
                         <div class="flex items-center gap-2">
@@ -72,7 +337,7 @@ async function bringAllCards(pet) {
                                     d="M4 9.42h1.063C5.4 12.323 7.317 14 10.34 14c.622 0 1.167-.068 1.659-.185v-1.3c-.484.119-1.045.17-1.659.17-2.1 0-3.455-1.198-3.775-3.264h4.017v-.928H6.497v-.936q-.002-.165.008-.329h4.078v-.927H6.618c.388-1.898 1.719-2.985 3.723-2.985.614 0 1.175.05 1.659.177V2.194A6.6 6.6 0 0 0 10.341 2c-2.928 0-4.82 1.569-5.244 4.3H4v.928h1.01v1.265H4v.928z" />
                             </svg>
                             <p>Price:<span class="pl-2 text-[16px] text-[#131313] ">${pets.price == null || pets.price
-                                    == undefined ? "Unavailable" : pets.price} </span></p>
+                        == undefined ? "Unavailable" : pets.price} </span></p>
                         </div>
                         <div class="divider divider-start"></div>
                         <div class="flex justify-between">
@@ -104,7 +369,7 @@ async function bringAllCards(pet) {
         //Event listener to handle data sorting
         document.getElementById("btn-Sort-All-Data").addEventListener('click', function () {
             if (!isSorted) {
-                sortedArray = [...pet].sort((a, b) => a.price - b.price); //data sorted in ascending order
+                sortedArray = [...pet].sort((a, b) => b.price - a.price); //data sorted in ascending order
                 container.innerHTML = ``;//clear the container div
                 renderPets(sortedArray);
                 isSorted = true;
