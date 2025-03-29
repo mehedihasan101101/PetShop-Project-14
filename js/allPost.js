@@ -1,6 +1,6 @@
 //Global Variables
 const container = document.getElementById("Container-All-Pets") //All pet Card div stored
-reloadAllPets = false;
+let cloneOfAllPets = []; //this variable contain a clone of all pets data from loadAllPets() function
 
 
 // Function to fetch data from api.
@@ -10,7 +10,7 @@ async function loadAllPets() {
         const res = await fetch("https://openapi.programming-hero.com/api/peddy/pets");
         const allPets = await res.json();
         bringAllCards(allPets.pets); // this function render all pets
-        console.log(allPetCopy);
+        cloneOfAllPets = [...allPets.pets];
 
 
     } catch (err) {
@@ -22,161 +22,51 @@ async function loadAllPets() {
 loadAllPets()
 
 // this function render data based on category
-async function renderByCategory(btnId) {
+async function renderByCategory(category) {
     try {
-
-        // Get the button element for the selected category
-        const Btn = document.getElementById(btnId);
-
-        // Define the initial API link for dynamic category usage
-        let apiOrigin = 'https://openapi.programming-hero.com/api/peddy/category/dog';
-
-        //if the button is for dog category 
-        if (btnId == "Btn-Dog") {
+        
+        //this api path is dynamically handled by btn
+        if( category == "all"){
+            container.innerHTML = ``;
+            bringAllCards(cloneOfAllPets);
+        }
+        else{
+            apiOrigin = `https://openapi.programming-hero.com/api/peddy/category/${category}`;
             let data = await fetch(apiOrigin);
             let allData = await data.json();
             let allDataMain = allData.data;
-
-
+    
             //this if condition 
             if (allDataMain.length == 0) {
-
+    
                 container.className = "";
                 container.classList.add("w-full");
                 container.innerHTML =
                     `                                        
-                  <div class=" bg-[#f8f8f8] w-full flex justify-center flex-col items-center lg:p-40 md:p-20 p-5 md:space-y-5 space-y-2 shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)]">
-                     <img src="assets/error.webp" alt="">
-                     <h1 class="text-[#131313] lg:text-5xl md:text-3xl text-xl  font-extrabold">No Information Available</h1>
-                     <p class="text-center">Currently, no information is available. Please check back later for updates or try different category</p>
-                   </div>            
-                    `;
-
+                                  <div class=" bg-[#f8f8f8] w-full flex justify-center flex-col items-center lg:p-40 md:p-20 p-5 md:space-y-5 space-y-2 shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)]">
+                                     <img src="assets/error.webp" alt="">
+                                     <h1 class="text-[#131313] lg:text-5xl md:text-3xl text-xl  font-extrabold">No Information Available</h1>
+                                     <p class="text-center">Currently, no information is available. Please check back later for updates or try different category</p>
+                                   </div>            
+                                    `;
+    
             }
-
+            
             else {
-
+    
                 container.innerHTML = ``;
                 bringAllCards(allDataMain);
-
-
-
+    
             }
         }
-
-        //if the button is for Cat category 
-        else if (btnId == "Btn-Cat") {
-            // Update the API origin link dynamically for the cat category
-            apiOrigin = apiOrigin.replace("dog", "cat");
-            let data = await fetch(apiOrigin);
-            let allData = await data.json();
-            let allDataMain = allData.data;
-
-
-
-            if (allDataMain.length == 0) {
-
-
-
-                container.className = "";
-                container.classList.add("w-full");
-                container.innerHTML =
-                    `                                        
-                  <div class=" bg-[#f8f8f8] w-full flex justify-center flex-col items-center lg:p-40 md:p-20 p-5 md:space-y-5 space-y-2 shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)]">
-                     <img src="assets/error.webp" alt="">
-                     <h1 class="text-[#131313] lg:text-5xl md:text-3xl text-xl  font-extrabold">No Information Available</h1>
-                     <p class="text-center">Currently, no information is available. Please check back later for updates or try different category</p>
-                   </div>            
-                    `;
-
-
-            }
-            else {
-
-                container.innerHTML = ``;
-                bringAllCards(allDataMain);
-
-            }
-
-        }
-        //if the button is for Rabbit category 
-        else if (btnId == "Btn-Rabbit") {
-            // Update the API origin link dynamically for the rabbit category
-            apiOrigin = apiOrigin.replace("dog", "rabbit");
-            let data = await fetch(apiOrigin);
-            let allData = await data.json();
-            let allDataMain = allData.data;
-
-
-
-            if (allDataMain.length == 0) {
-
-
-
-                container.className = "";
-                container.classList.add("w-full");
-                container.innerHTML =
-                    `                                        
-              <div class=" bg-[#f8f8f8] w-full flex justify-center flex-col items-center lg:p-40 md:p-20 p-5 md:space-y-5 space-y-2 shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)]">
-                 <img src="assets/error.webp" alt="">
-                 <h1 class="text-[#131313] lg:text-5xl md:text-3xl text-xl  font-extrabold">No Information Available</h1>
-                 <p class="text-center">Currently, no information is available. Please check back later for updates or try different category</p>
-               </div>            
-                `;
-
-
-            }
-            else {
-
-                container.innerHTML = ``;
-                bringAllCards(allDataMain);
-
-            }
-        }
-        //if the button is for bird category 
-        else if (btnId == "Btn-Bird") {
-            // Update the API origin link dynamically for the bird category
-            apiOrigin = apiOrigin.replace('dog', 'bird');
-            let data = await fetch(apiOrigin);
-            let allData = await data.json()
-            let allDataMain = allData.data;
-
-
-
-            if (allDataMain.length == 0) {
-
-
-
-                container.className = "";
-                container.classList.add("w-full");
-                container.innerHTML =
-                    `                                        
-              <div class=" bg-[#f8f8f8] w-full flex justify-center flex-col items-center lg:p-40 md:p-20 p-5 md:space-y-5 space-y-2 shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)]">
-                 <img src="assets/error.webp" alt="">
-                 <h1 class="text-[#131313] lg:text-5xl md:text-3xl text-xl  font-extrabold">No Information Available</h1>
-                 <p class="text-center">Currently, no information is available. Please check back later for updates or try different category</p>
-               </div>            
-                `;
-
-
-            }
-            else {
-
-                container.innerHTML = ``;
-                bringAllCards(allDataMain);
-
-            }
-
-        }
+        
     }
+
     catch (err) {
         console.error("Error Happened:", err)
     }
 
-
-
 }
-
 
 
 async function bringAllCards(pet) {

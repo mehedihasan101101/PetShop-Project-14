@@ -137,21 +137,25 @@
             </div>
             <!-- categories -->
             <div class="mt-9">
-                <div class=" grid md:grid-cols-4 grid-cols-2 gap-5">
+                <div class=" grid md:grid-cols-5 grid-cols-2 ">
+                    <!-- AllPet -->
+                    <a id="all" onclick="renderByCategory('all')"
+                        class="btn bg-white lg:text-[35px] text-[25px] font-extrabold lg:pr-20 lg:pl-20 lg:pt-12 lg:pb-12 lg:w-80 p-8 ">
+                        <img src="assets/pet-care.png" class="lg:pr-5 lg:w-auto w-10 pr-2" alt="">All</a>
                     <!-- dog -->
-                    <a id="Btn-Dog" onclick="renderByCategory('Btn-Dog')"
+                    <a id="Dog" onclick="renderByCategory('Dog')"
                         class="btn bg-white lg:text-[35px] text-[25px] font-extrabold lg:pr-20 lg:pl-20 lg:pt-12 lg:pb-12 lg:w-80 p-8 ">
                         <img src="assets/dog.png" class="lg:pr-5 lg:w-auto w-10 pr-2" alt="">Dogs</a>
                     <!-- cat -->
-                    <a id="Btn-Cat" onclick="renderByCategory('Btn-Cat')"
+                    <a id="Cat" onclick="renderByCategory('Cat')"
                         class="btn bg-white lg:text-[35px] text-[25px] font-extrabold lg:pr-20 lg:pl-20 lg:pt-12 lg:pb-12 lg:w-80 p-8 ">
                         <img src="assets/cat.png" class="lg:pr-5 lg:w-auto w-10 pr-2" alt="">Cats</a>
                     <!-- Rabbit -->
-                    <a id="Btn-Rabbit" onclick="renderByCategory('Btn-Rabbit')"
+                    <a id="Rabbit" onclick="renderByCategory('Rabbit')"
                         class="btn bg-white lg:text-[35px] text-[25px] font-extrabold lg:pr-20 lg:pl-20 lg:pt-12 lg:pb-12 lg:w-80 p-8 ">
                         <img src="assets/rabbit.png" class="lg:pr-5 lg:w-auto w-10 pr-2" alt="">Rabbits</a>
                     <!-- Bird -->
-                    <a id="Btn-Bird" onclick="renderByCategory('Btn-Bird')"
+                    <a id="Bird" onclick="renderByCategory('Bird')"
                         class="btn bg-white lg:text-[35px] text-[25px] font-extrabold lg:pr-20 lg:pl-20 lg:pt-12 lg:pb-12 lg:w-80 p-8 ">
                         <img src="assets/parrot.png" class="lg:pr-5 lg:w-auto w-10 pr-2" alt="">Birds</a>
                 </div>
@@ -162,9 +166,10 @@
         <section class="container m-auto p-2 space-y-5 mt-5">
 
             <div class="flex justify-between items-center">
-                <h1 class="md:text-[27px] text-[2px] font-bold"> Best Deal For you</h1>
+                <h1 class="md:text-[27px] text-[22px] font-bold"> Best Deal For you</h1>
                 <!-- sort By Price Button in ascending order  -->
-                <a id="btn-Sort-All-Data" class="btn md:text-[17px] text-[15px] bg-[#0E7A81] rounded-xl text-white md:p-7 p-6">Sort by
+                <a id="btn-Sort-All-Data"
+                    class="btn md:text-[17px] text-[15px] bg-[#0E7A81] rounded-xl text-white md:p-7 p-6">Sort by
                     Price</a>
             </div>
 
