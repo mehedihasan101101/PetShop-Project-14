@@ -58,7 +58,23 @@ async function renderByCategory(category) {
                 bringAllCards(allDataMain);
     
             }
+
+
         }
+        // 1.5 sec loading Screen
+        const loadingContainer = document.getElementById("loading"); //loadingScreenDiv
+        const likedContainer = document.getElementById("container-liked");//The div for representing liked pet
+
+        loadingContainer.classList.remove("hidden");
+        container.classList.add("hidden");
+        likedContainer.classList.add("hidden");
+
+        setTimeout(()=>{
+          
+            loadingContainer.classList.add("hidden");
+            container.classList.remove("hidden");
+            likedContainer.classList.remove("hidden");
+           },1500)
         
     }
 
