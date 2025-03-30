@@ -2,7 +2,6 @@
 const container = document.getElementById("Container-All-Pets") //All pet Card div stored
 let cloneOfAllPets = []; //this variable contain a clone of all pets data from loadAllPets() function
 
-
 // Function to fetch data from api.
 async function loadAllPets() {
     try {
@@ -20,25 +19,24 @@ async function loadAllPets() {
 }
 
 loadAllPets()
-
 // this function render data based on category
 async function renderByCategory(category) {
     try {
-        
+
         //this api path is dynamically handled by btn
-        if( category == "all"){
+        if (category == "all") {
             container.innerHTML = ``;
             bringAllCards(cloneOfAllPets);
         }
-        else{
+        else {
             apiOrigin = `https://openapi.programming-hero.com/api/peddy/category/${category}`;
             let data = await fetch(apiOrigin);
             let allData = await data.json();
             let allDataMain = allData.data;
-    
+
             //this if condition 
             if (allDataMain.length == 0) {
-    
+
                 container.className = "";
                 container.classList.add("w-full");
                 container.innerHTML =
@@ -49,14 +47,14 @@ async function renderByCategory(category) {
                                      <p class="text-center">Currently, no information is available. Please check back later for updates or try different category</p>
                                    </div>            
                                     `;
-    
+
             }
-            
+
             else {
-    
+
                 container.innerHTML = ``;
                 bringAllCards(allDataMain);
-    
+
             }
 
 
@@ -69,13 +67,13 @@ async function renderByCategory(category) {
         container.classList.add("hidden");
         likedContainer.classList.add("hidden");
 
-        setTimeout(()=>{
-          
+        setTimeout(() => {
+
             loadingContainer.classList.add("hidden");
             container.classList.remove("hidden");
             likedContainer.classList.remove("hidden");
-           },1500)
-        
+        }, 1500)
+
     }
 
     catch (err) {
@@ -86,6 +84,7 @@ async function renderByCategory(category) {
 
 
 async function bringAllCards(pet) {
+  
 
     try {
 
@@ -149,7 +148,7 @@ async function bringAllCards(pet) {
                         </div>
                         <div class="divider divider-start"></div>
                         <div class="flex justify-between">
-                            <button class="btn btn-square w-17 h-11 text-[#131313]">
+                            <button class="btn-like btn btn-square w-17 h-11 text-[#131313]">
                                 <svg class="w-8 h-6" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                     fill="currentColor" class="bi bi-hand-thumbs-up" viewBox="0 0 16 16">
                                     <path
@@ -168,8 +167,12 @@ async function bringAllCards(pet) {
                     </div>
                 </div>
                    `
+                  
 
             }
+
+    
+
 
         }
         renderPets(pet);
@@ -189,6 +192,17 @@ async function bringAllCards(pet) {
             }
         })
 
+      //This Event Listener add like functionality to all like button.
+       document.querySelectorAll(".btn-like").forEach((eachBtn,indexOfNodeLIst)=>{
+         eachBtn.addEventListener('click',()=>{
+            const likeContainer = document.getElementById("container-liked");
+      
+            likeContainer.innerHTML +=`<img class=" rounded w-full h-auto  object-cover" src="${pet[indexOfNodeLIst].image}" alt="">`
+ 
+         })
+       })
+    
+
     }
 
     catch (err) {
@@ -196,6 +210,7 @@ async function bringAllCards(pet) {
     }
 
 }
+
 
 
 

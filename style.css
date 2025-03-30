@@ -7,6 +7,7 @@
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
     --color-red-500: oklch(0.637 0.237 25.331);
+    --color-amber-100: oklch(0.962 0.059 95.617);
     --color-black: #000;
     --color-white: #fff;
     --spacing: 0.25rem;
@@ -21,6 +22,7 @@
     --font-weight-medium: 500;
     --font-weight-bold: 700;
     --font-weight-extrabold: 800;
+    --radius-lg: 0.5rem;
     --radius-xl: 0.75rem;
     --ease-in: cubic-bezier(0.4, 0, 1, 1);
     --ease-out: cubic-bezier(0, 0, 0.2, 1);
@@ -5311,6 +5313,9 @@
   .h-12 {
     height: calc(var(--spacing) * 12);
   }
+  .h-30 {
+    height: calc(var(--spacing) * 30);
+  }
   .h-\[30px\] {
     height: 30px;
   }
@@ -5320,14 +5325,26 @@
   .h-\[50px\] {
     height: 50px;
   }
+  .h-auto {
+    height: auto;
+  }
+  .h-full {
+    height: 100%;
+  }
   .h-screen {
     height: 100vh;
+  }
+  .max-h-full {
+    max-height: 100%;
   }
   .max-h-none {
     max-height: none;
   }
   .max-h-screen {
     max-height: 100vh;
+  }
+  .min-h-full {
+    min-height: 100%;
   }
   .min-h-screen {
     min-height: 100vh;
@@ -5452,6 +5469,9 @@
   .w-17 {
     width: calc(var(--spacing) * 17);
   }
+  .w-30 {
+    width: calc(var(--spacing) * 30);
+  }
   .w-\[30px\] {
     width: 30px;
   }
@@ -5466,6 +5486,9 @@
   }
   .w-screen {
     width: 100vw;
+  }
+  .max-w-\[100px\] {
+    max-width: 100px;
   }
   .max-w-none {
     max-width: none;
@@ -5833,6 +5856,9 @@
   .auto-rows-min {
     grid-auto-rows: min-content;
   }
+  .grid-cols-1 {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
   .grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -5992,6 +6018,9 @@
   .justify-items-stretch {
     justify-items: stretch;
   }
+  .gap-1 {
+    gap: calc(var(--spacing) * 1);
+  }
   .gap-2 {
     gap: calc(var(--spacing) * 2);
   }
@@ -6003,6 +6032,13 @@
   }
   .gap-15 {
     gap: calc(var(--spacing) * 15);
+  }
+  .space-y-0 {
+    :where(& > :not(:last-child)) {
+      --tw-space-y-reverse: 0;
+      margin-block-start: calc(calc(var(--spacing) * 0) * var(--tw-space-y-reverse));
+      margin-block-end: calc(calc(var(--spacing) * 0) * calc(1 - var(--tw-space-y-reverse)));
+    }
   }
   .space-y-1 {
     :where(& > :not(:last-child)) {
@@ -6037,10 +6073,26 @@
       --tw-space-y-reverse: 1;
     }
   }
+  .gap-x-0 {
+    column-gap: calc(var(--spacing) * 0);
+  }
+  .space-x-0 {
+    :where(& > :not(:last-child)) {
+      --tw-space-x-reverse: 0;
+      margin-inline-start: calc(calc(var(--spacing) * 0) * var(--tw-space-x-reverse));
+      margin-inline-end: calc(calc(var(--spacing) * 0) * calc(1 - var(--tw-space-x-reverse)));
+    }
+  }
   .space-x-reverse {
     :where(& > :not(:last-child)) {
       --tw-space-x-reverse: 1;
     }
+  }
+  .gap-y-0 {
+    row-gap: calc(var(--spacing) * 0);
+  }
+  .gap-y-2 {
+    row-gap: calc(var(--spacing) * 2);
   }
   .divide-x {
     :where(& > :not(:last-child)) {
@@ -6227,6 +6279,9 @@
   }
   .rounded-field {
     border-radius: var(--radius-field);
+  }
+  .rounded-lg {
+    border-radius: var(--radius-lg);
   }
   .rounded-selector {
     border-radius: var(--radius-selector);
@@ -6701,6 +6756,9 @@
   .bg-\[var\(--my_variable\)\] {
     background-color: var(--my_variable);
   }
+  .bg-amber-100 {
+    background-color: var(--color-amber-100);
+  }
   .bg-base-100 {
     background-color: var(--color-base-100);
   }
@@ -6975,6 +7033,9 @@
       --size: calc(var(--size-selector, 0.25rem) * 4);
     }
   }
+  .p-1 {
+    padding: calc(var(--spacing) * 1);
+  }
   .p-2 {
     padding: calc(var(--spacing) * 2);
   }
@@ -6992,12 +7053,6 @@
   }
   .p-32 {
     padding: calc(var(--spacing) * 32);
-  }
-  .p-40 {
-    padding: calc(var(--spacing) * 40);
-  }
-  .p-90 {
-    padding: calc(var(--spacing) * 90);
   }
   .menu-title {
     padding-inline: calc(0.25rem * 3);
@@ -8747,6 +8802,11 @@
       width: 600px;
     }
   }
+  .md\:max-w-\[150px\] {
+    @media (width >= 768px) {
+      max-width: 150px;
+    }
+  }
   .md\:min-w-\[150px\] {
     @media (width >= 768px) {
       min-width: 150px;
@@ -8830,6 +8890,11 @@
   .lg\:w-auto {
     @media (width >= 1200px) {
       width: auto;
+    }
+  }
+  .lg\:max-w-\[300px\] {
+    @media (width >= 1200px) {
+      max-width: 300px;
     }
   }
   .lg\:min-w-\[300px\] {
