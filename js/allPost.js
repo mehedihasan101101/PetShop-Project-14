@@ -172,74 +172,74 @@ async function bringAllCards(pet) {
             }
 
 
+  //Event listener to handle data sorting
+  document.getElementById("btn-Sort-All-Data").addEventListener('click', function () {
+    if (!isSorted) {
+        sortedArray = [...pet].sort((a, b) => b.price - a.price); //data sorted in ascending order
+        container.innerHTML = ``;//clear the container div
+        renderPets(sortedArray);
+        isSorted = true;
+    }
+    else {
+        container.innerHTML = ``;//clear the container div
+        renderPets(originalPetsData);
+        isSorted = false;
+    }
+})
 
+//This Event Listener add like functionality to all like button.
+document.querySelectorAll(".btn-like").forEach((eachBtn, indexOfNodeLIst) => {
+    eachBtn.addEventListener('click', () => {
+        const likeContainer = document.getElementById("container-liked");
+
+        likeContainer.innerHTML += `
+    <div class="p-2 rounded shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)]">
+    <img class=" rounded w-full h-auto  object-cover" src="${pet[indexOfNodeLIst].image}" alt="">
+    </div>
+
+    `
+
+    })
+})
+
+//This Event Listener add adopt functionality for modal.
+document.querySelectorAll(".btn-adopt").forEach((eachBtn, indexOfNodeLIst) => {
+    eachBtn.addEventListener('click', () => {
+        const modalContainer = document.getElementById("modal")
+
+
+        modalContainer.classList.remove("hidden");
+        setTimeout(() => {
+            modalContainer.classList.remove("opacity-0", "scale-20", "invisible");
+        }, 50);
+
+        setTimeout(() => {
+            modalContainer.classList.add("opacity-0", "scale-20", "invisible");
+        }, 3000);
+
+        // timer
+        let count = 3; // Start count from 3
+        const timerDiv = document.getElementById("timer");
+        timerDiv.textContent = count;
+        const countdown = setInterval(() => {
+            count--;
+            timerDiv.textContent = count;
+
+            if (count === 0) {
+                clearInterval(countdown);
+
+
+            }
+        }, 1000); // Runs every 1 second
+
+
+    })
+})
 
         }
         renderPets(pet);
 
-        //Event listener to handle data sorting
-        document.getElementById("btn-Sort-All-Data").addEventListener('click', function () {
-            if (!isSorted) {
-                sortedArray = [...pet].sort((a, b) => b.price - a.price); //data sorted in ascending order
-                container.innerHTML = ``;//clear the container div
-                renderPets(sortedArray);
-                isSorted = true;
-            }
-            else {
-                container.innerHTML = ``;//clear the container div
-                renderPets(originalPetsData);
-                isSorted = false;
-            }
-        })
-
-        //This Event Listener add like functionality to all like button.
-        document.querySelectorAll(".btn-like").forEach((eachBtn, indexOfNodeLIst) => {
-            eachBtn.addEventListener('click', () => {
-                const likeContainer = document.getElementById("container-liked");
-
-                likeContainer.innerHTML += `
-            <div class="p-2 rounded shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)]">
-            <img class=" rounded w-full h-auto  object-cover" src="${pet[indexOfNodeLIst].image}" alt="">
-            </div>
-
-            `
-
-            })
-        })
-
-        //This Event Listener add adopt functionality for modal.
-        document.querySelectorAll(".btn-adopt").forEach((eachBtn, indexOfNodeLIst) => {
-            eachBtn.addEventListener('click', () => {
-                const modalContainer = document.getElementById("modal")
-
-
-                modalContainer.classList.remove("hidden");
-                setTimeout(() => {
-                    modalContainer.classList.remove("opacity-0", "scale-20", "invisible");
-                }, 50);
-
-                setTimeout(() => {
-                    modalContainer.classList.add("opacity-0", "scale-20", "invisible");
-                }, 3000);
-
-                // timer
-                let count = 3; // Start count from 3
-                const timerDiv = document.getElementById("timer");
-                timerDiv.textContent = count;
-                const countdown = setInterval(() => {
-                    count--;
-                    timerDiv.textContent = count;
-
-                    if (count === 0) {
-                        clearInterval(countdown);
-
-
-                    }
-                }, 1000); // Runs every 1 second
-
-
-            })
-        })
+      
 
 
 
