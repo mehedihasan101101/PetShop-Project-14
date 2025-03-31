@@ -61,17 +61,17 @@ async function renderByCategory(category) {
         }
         // 1.5 sec loading Screen
         const loadingContainer = document.getElementById("loading"); //loadingScreenDiv
-        const likedContainer = document.getElementById("container-liked");//The div for representing liked pet
+        const likedMainContainer = document.getElementById("parent-container-like");//The div for representing liked pet
 
         loadingContainer.classList.remove("hidden");
         container.classList.add("hidden");
-        likedContainer.classList.add("hidden");
+        likedMainContainer.classList.add("hidden");
 
         setTimeout(() => {
 
             loadingContainer.classList.add("hidden");
             container.classList.remove("hidden");
-            likedContainer.classList.remove("hidden");
+            likedMainContainer.classList.remove("hidden");
         }, 1500)
 
     }
@@ -84,7 +84,7 @@ async function renderByCategory(category) {
 
 
 async function bringAllCards(pet) {
-  
+
 
     try {
 
@@ -167,11 +167,11 @@ async function bringAllCards(pet) {
                     </div>
                 </div>
                    `
-                  
+
 
             }
 
-    
+
 
 
         }
@@ -192,34 +192,56 @@ async function bringAllCards(pet) {
             }
         })
 
-      //This Event Listener add like functionality to all like button.
-       document.querySelectorAll(".btn-like").forEach((eachBtn,indexOfNodeLIst)=>{
-         eachBtn.addEventListener('click',()=>{
-            const likeContainer = document.getElementById("container-liked");
-      
-            likeContainer.innerHTML +=`
+        //This Event Listener add like functionality to all like button.
+        document.querySelectorAll(".btn-like").forEach((eachBtn, indexOfNodeLIst) => {
+            eachBtn.addEventListener('click', () => {
+                const likeContainer = document.getElementById("container-liked");
+
+                likeContainer.innerHTML += `
             <div class="p-2 rounded shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)]">
             <img class=" rounded w-full h-auto  object-cover" src="${pet[indexOfNodeLIst].image}" alt="">
             </div>
 
             `
- 
-         })
-       })
 
-        //This Event Listener add adopt functionality to all like button.
-        document.querySelectorAll(".btn-adopt").forEach((eachBtn,indexOfNodeLIst)=>{
-            eachBtn.addEventListener('click',()=>{
+            })
+        })
+
+        //This Event Listener add adopt functionality for modal.
+        document.querySelectorAll(".btn-adopt").forEach((eachBtn, indexOfNodeLIst) => {
+            eachBtn.addEventListener('click', () => {
                 const modalContainer = document.getElementById("modal")
+
+
                 modalContainer.classList.remove("hidden");
-                setTimeout(()=>{
-                    modalContainer.classList.add("hidden");
-                },3000)
+                setTimeout(() => {
+                    modalContainer.classList.remove("opacity-0", "scale-20", "invisible");
+                }, 50);
+
+                setTimeout(() => {
+                    modalContainer.classList.add("opacity-0", "scale-20", "invisible");
+                }, 3000);
+
+                // timer
+                let count = 3; // Start count from 3
+                const timerDiv = document.getElementById("timer");
+                timerDiv.textContent = count;
+                const countdown = setInterval(() => {
+                    count--;
+                    timerDiv.textContent = count;
+
+                    if (count === 0) {
+                        clearInterval(countdown);
+
+
+                    }
+                }, 1000); // Runs every 1 second
 
 
             })
-          })
-    
+        })
+
+
 
     }
 
