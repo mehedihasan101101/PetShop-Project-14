@@ -179,10 +179,47 @@ async function bringAllCards(pet) {
                 })
             })
             //Render Modal of Details Page
-            document.querySelectorAll(".btn-details").forEach((eachBtn, indexOfNodeLIst) => {
-                eachBtn.addEventListener('click', () => {
-
+            document.querySelectorAll(".btn-details").forEach((eachBtn, indexOfNodeLIst)  => {
+                eachBtn.addEventListener('click', () => { 
                     renderModal('modal-Pets-Details')
+                    const ImageId = document.getElementById("petImage");
+                    const breedId = document.getElementById("Breed");
+                    const PetNameId = document.getElementById("pet-name");
+                    const BirthId = document.getElementById("birth");
+                    const GenderId = document.getElementById("gender");
+                    const priceId = document.getElementById("price");
+                    const VaccinationId = document.getElementById("Vaccination");
+                    
+
+                    individualPetPath = `https://openapi.programming-hero.com/api/peddy/pet/${pet[indexOfNodeLIst].petId}`
+                    fetch(individualPetPath)
+                    .then(response=>response.json())
+                    .then(data=>{
+                        ImageId.src = `${pet[indexOfNodeLIst].image=== null || pet[indexOfNodeLIst].image
+                        === undefined ? pet[indexOfNodeLIst].image = "Unavailable" : pet[indexOfNodeLIst].image}`
+
+                        PetNameId.innerText = `${pet[indexOfNodeLIst].pet_name=== null || pet[indexOfNodeLIst].pet_name
+                        === undefined ? pet[indexOfNodeLIst].pet_name = "Unavailable" : pet[indexOfNodeLIst].pet_name}`
+
+                        breedId.innerText = `${pet[indexOfNodeLIst].breed=== null || pet[indexOfNodeLIst].breed
+                        === undefined ? pet[indexOfNodeLIst].breed = "Unavailable" : pet[indexOfNodeLIst].breed}`;
+
+                        BirthId.innerText = `${pet[indexOfNodeLIst].date_of_birth=== null || pet[indexOfNodeLIst].date_of_birth
+                        === undefined ? pet[indexOfNodeLIst].date_of_birth = "Unavailable" : pet[indexOfNodeLIst].date_of_birth}`;
+
+                        GenderId.innerText = `${pet[indexOfNodeLIst].gender=== null || pet[indexOfNodeLIst].gender
+                        === undefined ? pet[indexOfNodeLIst].gender = "Unavailable" : pet[indexOfNodeLIst].gender}`;
+
+                        priceId.innerText = `${pet[indexOfNodeLIst].price=== null || pet[indexOfNodeLIst].price
+                        === undefined ? "Unavailable" : pet[indexOfNodeLIst].price}`;
+
+                        VaccinationId.innerText = `${pet[indexOfNodeLIst].vaccinated_status=== null || pet[indexOfNodeLIst].vaccinated_status
+                        === undefined ? "Unavailable" : pet[indexOfNodeLIst].vaccinated_status}`;
+
+                        
+                    });
+
+                    
                 })
             })
         }

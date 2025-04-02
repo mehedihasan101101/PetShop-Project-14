@@ -212,65 +212,60 @@
         </div>
         <!-- Pet Details Page Modal-->
         <div id="modal-Pets-Details"
-            class="invisible opacity-0 m-auto mar overflow-scroll w-[50%] transition-all duration-500 fixed inset-0 z-50  flex items-center justify-center">
-            <div class=" space-y-2 flex    flex-col items-center justify-center w-full  rounded-xl bg-red-500">
-                <img src="assets/handshake.gif" class="w-30" alt="">
-                <h1 class="text-5xl font-extrabold">Congrats</h1>
-                <h5 class="text-center font-semibold">Adoption Process has been Started for your Pet,<br>Check Email on
-                    30th February</h5>
-                <span id="timer" class="text-5xl font-extrabold"></span>
-                <img src="assets/handshake.gif" class="w-30" alt="">
-                <h1 class="text-5xl font-extrabold">Congrats</h1>
-                <h5 class="text-center font-semibold">Adoption Process has been Started for your Pet,<br>Check Email on
-                    30th February</h5>
-                <span id="timer" class="text-5xl font-extrabold"></span>
-                <img src="assets/handshake.gif" class="w-30" alt="">
-                <h1 class="text-5xl font-extrabold">Congrats</h1>
-                <h5 class="text-center font-semibold">Adoption Process has been Started for your Pet,<br>Check Email on
-                    30th February</h5>
-                <span id="timer" class="text-5xl font-extrabold"></span>
-                <img src="assets/handshake.gif" class="w-30" alt="">
-                <h1 class="text-5xl font-extrabold">Congrats</h1>
-                <h5 class="text-center font-semibold">Adoption Process has been Started for your Pet,<br>Check Email on
-                    30th February</h5>
-                <span id="timer" class="text-5xl font-extrabold"></span>
-                <img src="assets/handshake.gif" class="w-30" alt="">
-                <h1 class="text-5xl font-extrabold">Congrats</h1>
-                <h5 class="text-center font-semibold">Adoption Process has been Started for your Pet,<br>Check Email on
-                    30th February</h5>
-                <span id="timer" class="text-5xl font-extrabold"></span>
-                <img src="assets/handshake.gif" class="w-30" alt="">
-                <h1 class="text-5xl font-extrabold">Congrats</h1>
-                <h5 class="text-center font-semibold">Adoption Process has been Started for your Pet,<br>Check Email on
-                    30th February</h5>
-                <span id="timer" class="text-5xl font-extrabold"></span>
-                <img src="assets/handshake.gif" class="w-30" alt="">
-                <h1 class="text-5xl font-extrabold">Congrats</h1>
-                <h5 class="text-center font-semibold">Adoption Process has been Started for your Pet,<br>Check Email on
-                    30th February</h5>
-                <span id="timer" class="text-5xl font-extrabold"></span>
-                <img src="assets/handshake.gif" class="w-30" alt="">
-                <h1 class="text-5xl font-extrabold">Congrats</h1>
-                <h5 class="text-center font-semibold">Adoption Process has been Started for your Pet,<br>Check Email on
-                    30th February</h5>
-                <span id="timer" class="text-5xl font-extrabold"></span>
-                <img src="assets/handshake.gif" class="w-30" alt="">
-                <h1 class="text-5xl font-extrabold">Congrats</h1>
-                <h5 class="text-center font-semibold">Adoption Process has been Started for your Pet,<br>Check Email on
-                    30th February</h5>
-                <span id="timer" class="text-5xl font-extrabold"></span>
-                <img src="assets/handshake.gif" class="w-30" alt="">
-                <h1 class="text-5xl font-extrabold">Congrats</h1>
-                <h5 class="text-center font-semibold">Adoption Process has been Started for your Pet,<br>Check Email on
-                    30th February</h5>
-                <span id="timer" class="text-5xl font-extrabold"></span>
-                <img src="assets/handshake.gif" class="w-30" alt="">
-                <h1 class="text-5xl font-extrabold">Congrats</h1>
-                <h5 class="text-center font-semibold">Adoption Process has been Started for your Pet,<br>Check Email on
-                    30th February</h5>
-                <span id="timer" class="text-5xl font-extrabold"></span>
+            class="invisible opacity-0 m-auto bg-amber-400/50 overflow-scroll w-full transition-all duration-500 fixed inset-0 z-50  flex items-center justify-center">
+            <div class="w-[50%] rounded-xl flex  items-center  bg-white p-10">
+                <div class="w-full space-y-3">
+                    <div class="">
+                        <img class=" w-full rounded-xl" id="petImage" src="" alt="">
+                      </div>
+                      <h1 id="pet-name" class="text-[44px] font-extrabold"></h1>
+                      <div class="grid grid-cols-2 justify-items-start items-start gap-y-1">
+                
+                        <div class="flex items-center gap-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-grid-1x2" viewBox="0 0 16 16">
+                                <path
+                                    d="M6 1H1v14h5zm9 0h-5v5h5zm0 9v5h-5v-5zM0 1a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1zm9 0a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1h-5a1 1 0 0 1-1-1zm1 8a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1v-5a1 1 0 0 0-1-1z" />
+                            </svg>
+                            <p>Breed: <span id="Breed" class="pl-2 text-[16px] text-[#131313]"></span></p>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-calendar4" viewBox="0 0 16 16">
+                                <path
+                                    d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M2 2a1 1 0 0 0-1 1v1h14V3a1 1 0 0 0-1-1zm13 3H1v9a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1z" />
+                            </svg>
+                            <p>Birth:<span id="birth" class="pl-2 text-[16px] text-[#131313] "></span></p>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-gender-female" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                    d="M8 1a4 4 0 1 0 0 8 4 4 0 0 0 0-8M3 5a5 5 0 1 1 5.5 4.975V12h2a.5.5 0 0 1 0 1h-2v2.5a.5.5 0 0 1-1 0V13h-2a.5.5 0 0 1 0-1h2V9.975A5 5 0 0 1 3 5" />
+                            </svg>
+                            <p>Gender:<span id="gender" class="pl-2 text-[16px] text-[#131313] "></span></p>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-currency-euro" viewBox="0 0 16 16">
+                                <path
+                                    d="M4 9.42h1.063C5.4 12.323 7.317 14 10.34 14c.622 0 1.167-.068 1.659-.185v-1.3c-.484.119-1.045.17-1.659.17-2.1 0-3.455-1.198-3.775-3.264h4.017v-.928H6.497v-.936q-.002-.165.008-.329h4.078v-.927H6.618c.388-1.898 1.719-2.985 3.723-2.985.614 0 1.175.05 1.659.177V2.194A6.6 6.6 0 0 0 10.341 2c-2.928 0-4.82 1.569-5.244 4.3H4v.928h1.01v1.265H4v.928z" />
+                            </svg>
+                            <p>Price:<span id="price" class="pl-2 text-[16px] text-[#131313] "> </span></p>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-balloon-heart" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="m8 2.42-.717-.737c-1.13-1.161-3.243-.777-4.01.72-.35.685-.451 1.707.236 3.062C4.16 6.753 5.52 8.32 8 10.042c2.479-1.723 3.839-3.29 4.491-4.577.687-1.355.587-2.377.236-3.061-.767-1.498-2.88-1.882-4.01-.721zm-.49 8.5c-10.78-7.44-3-13.155.359-10.063q.068.062.132.129.065-.067.132-.129c3.36-3.092 11.137 2.624.357 10.063l.235.468a.25.25 0 1 1-.448.224l-.008-.017c.008.11.02.202.037.29.054.27.161.488.419 1.003.288.578.235 1.15.076 1.629-.157.469-.422.867-.588 1.115l-.004.007a.25.25 0 1 1-.416-.278c.168-.252.4-.6.533-1.003.133-.396.163-.824-.049-1.246l-.013-.028c-.24-.48-.38-.758-.448-1.102a3 3 0 0 1-.052-.45l-.04.08a.25.25 0 1 1-.447-.224l.235-.468ZM6.013 2.06c-.649-.18-1.483.083-1.85.798-.131.258-.245.689-.08 1.335.063.244.414.198.487-.043.21-.697.627-1.447 1.359-1.692.217-.073.304-.337.084-.398"/>
+                              </svg>
+                            <p>Vaccinated status:<span id="Vaccination" class="pl-2 text-[16px] text-[#131313] "></span></p>
+                        </div>
+                      </div>
+                </div>
+              
             </div>
+
         </div>
+
     </main>
 
 
