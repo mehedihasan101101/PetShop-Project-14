@@ -161,7 +161,9 @@ async function bringAllCards(pet) {
             //This Event Listener add adopt functionality for modal.
             document.querySelectorAll(".btn-adopt").forEach((eachBtn, indexOfNodeLIst) => {
                 eachBtn.addEventListener('click', () => {
+
                     eachBtn.disabled = true;
+                    eachBtn.innerText ="Adopted";
                     renderModal("Congrats-Modal",3000); 
                     // timer
                     let count = 3; // Start count from 3
@@ -189,6 +191,10 @@ async function bringAllCards(pet) {
                     const GenderId = document.getElementById("gender");
                     const priceId = document.getElementById("price");
                     const VaccinationId = document.getElementById("Vaccination");
+                    const DetailsId = document.getElementById("details");
+                    document.body.classList.add("overflow-hidden");
+
+                    
                     
 
                     individualPetPath = `https://openapi.programming-hero.com/api/peddy/pet/${pet[indexOfNodeLIst].petId}`
@@ -213,12 +219,21 @@ async function bringAllCards(pet) {
                         priceId.innerText = `${pet[indexOfNodeLIst].price=== null || pet[indexOfNodeLIst].price
                         === undefined ? "Unavailable" : pet[indexOfNodeLIst].price}`;
 
+                        DetailsId.innerText = `${pet[indexOfNodeLIst].pet_details=== null || pet[indexOfNodeLIst].pet_details
+                        === undefined ? "Unavailable" : pet[indexOfNodeLIst].pet_details}`;
+
                         VaccinationId.innerText = `${pet[indexOfNodeLIst].vaccinated_status=== null || pet[indexOfNodeLIst].vaccinated_status
                         === undefined ? "Unavailable" : pet[indexOfNodeLIst].vaccinated_status}`;
 
                         
-                    });
+                    }); 
 
+                    
+                    document.getElementById("cancel-btn").addEventListener('click',()=>{
+                    const detailsModalContainer = document.getElementById("modal-Pets-Details");
+                    detailsModalContainer.classList.add("invisible","opacity-0");
+                    document.body.classList.remove("overflow-hidden");;
+                    })
                     
                 })
             })

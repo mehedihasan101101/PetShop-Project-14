@@ -212,14 +212,14 @@
         </div>
         <!-- Pet Details Page Modal-->
         <div id="modal-Pets-Details"
-            class="invisible opacity-0 m-auto bg-amber-400/50 overflow-scroll w-full transition-all duration-500 fixed inset-0 z-50  flex items-center justify-center">
-            <div class="w-[50%] rounded-xl flex  items-center  bg-white p-10">
-                <div class="w-full space-y-3">
+            class="invisible opacity-0 m-auto bg-[#000000]/10 overflow-scroll w-full transition-all duration-500 fixed inset-0 z-50  flex items-center justify-center">
+            <div class="lg:w-[50%] w-[95%] rounded-xl flex  items-center  bg-white p-10 lg:mt-15">
+                <div class="w-full space-y-3  ">
                     <div class="">
                         <img class=" w-full rounded-xl" id="petImage" src="" alt="">
                       </div>
                       <h1 id="pet-name" class="text-[44px] font-extrabold"></h1>
-                      <div class="grid grid-cols-2 justify-items-start items-start gap-y-1">
+                      <div class="grid md:grid-cols-2 justify-items-start items-start gap-y-1">
                 
                         <div class="flex items-center gap-2">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -258,8 +258,20 @@
                                 <path fill-rule="evenodd" d="m8 2.42-.717-.737c-1.13-1.161-3.243-.777-4.01.72-.35.685-.451 1.707.236 3.062C4.16 6.753 5.52 8.32 8 10.042c2.479-1.723 3.839-3.29 4.491-4.577.687-1.355.587-2.377.236-3.061-.767-1.498-2.88-1.882-4.01-.721zm-.49 8.5c-10.78-7.44-3-13.155.359-10.063q.068.062.132.129.065-.067.132-.129c3.36-3.092 11.137 2.624.357 10.063l.235.468a.25.25 0 1 1-.448.224l-.008-.017c.008.11.02.202.037.29.054.27.161.488.419 1.003.288.578.235 1.15.076 1.629-.157.469-.422.867-.588 1.115l-.004.007a.25.25 0 1 1-.416-.278c.168-.252.4-.6.533-1.003.133-.396.163-.824-.049-1.246l-.013-.028c-.24-.48-.38-.758-.448-1.102a3 3 0 0 1-.052-.45l-.04.08a.25.25 0 1 1-.447-.224l.235-.468ZM6.013 2.06c-.649-.18-1.483.083-1.85.798-.131.258-.245.689-.08 1.335.063.244.414.198.487-.043.21-.697.627-1.447 1.359-1.692.217-.073.304-.337.084-.398"/>
                               </svg>
                             <p>Vaccinated status:<span id="Vaccination" class="pl-2 text-[16px] text-[#131313] "></span></p>
+                            
                         </div>
+
                       </div>
+                      <div class="divider"></div>
+                      <div>
+                      <h4 class="text-2xl font-bold">Details Information</h4>
+
+                      <p id="details" class="mt-2"></p>
+
+                      </div>
+                      <a id="cancel-btn" class="btn bg-[#0E7A81]/10 rounded-xl text-[#0E7A81] p-7 w-full mt-3 text-xl">Cancel</a>
+     
+                 
                 </div>
               
             </div>
