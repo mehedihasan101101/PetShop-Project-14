@@ -6,9 +6,7 @@
       "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
-    --color-red-300: oklch(0.808 0.114 19.571);
     --color-red-500: oklch(0.637 0.237 25.331);
-    --color-amber-400: oklch(0.828 0.189 84.429);
     --color-gray-400: oklch(0.707 0.022 261.325);
     --color-black: #000;
     --color-white: #fff;
@@ -4560,12 +4558,6 @@
   .mt-9 {
     margin-top: calc(var(--spacing) * 9);
   }
-  .mt-10 {
-    margin-top: calc(var(--spacing) * 10);
-  }
-  .mt-15 {
-    margin-top: calc(var(--spacing) * 15);
-  }
   .mt-20 {
     margin-top: calc(var(--spacing) * 20);
   }
@@ -5461,9 +5453,6 @@
   .loading-xs {
     width: calc(var(--size-selector, 0.25rem) * 4);
   }
-  .w-1 {
-    width: calc(var(--spacing) * 1);
-  }
   .w-1\/2 {
     width: calc(1/2 * 100%);
   }
@@ -5490,9 +5479,6 @@
   }
   .w-\[38px\] {
     width: 38px;
-  }
-  .w-\[50\%\] {
-    width: 50%;
   }
   .w-\[50px\] {
     width: 50px;
@@ -6183,9 +6169,6 @@
   .overflow-scroll {
     overflow: scroll;
   }
-  .overflow-x-scroll {
-    overflow-x: scroll;
-  }
   .scroll-auto {
     scroll-behavior: auto;
   }
@@ -6779,17 +6762,8 @@
   .bg-\[var\(--my_variable\)\] {
     background-color: var(--my_variable);
   }
-  .bg-amber-400 {
-    background-color: var(--color-amber-400);
-  }
-  .bg-amber-400\/50 {
-    background-color: color-mix(in oklab, var(--color-amber-400) 50%, transparent);
-  }
   .bg-base-100 {
     background-color: var(--color-base-100);
-  }
-  .bg-red-300 {
-    background-color: var(--color-red-300);
   }
   .bg-red-500 {
     background-color: var(--color-red-500);
@@ -7258,10 +7232,6 @@
   .text-2xl {
     font-size: var(--text-2xl);
     line-height: var(--tw-leading, var(--text-2xl--line-height));
-  }
-  .text-3xl {
-    font-size: var(--text-3xl);
-    line-height: var(--tw-leading, var(--text-3xl--line-height));
   }
   .text-5xl {
     font-size: var(--text-5xl);
@@ -8865,21 +8835,6 @@
   .md\:mt-4 {
     @media (width >= 768px) {
       margin-top: calc(var(--spacing) * 4);
-    }
-  }
-  .md\:w-\[50\%\] {
-    @media (width >= 768px) {
-      width: 50%;
-    }
-  }
-  .md\:w-\[90\%\] {
-    @media (width >= 768px) {
-      width: 90%;
-    }
-  }
-  .md\:w-\[95\%\] {
-    @media (width >= 768px) {
-      width: 95%;
     }
   }
   .md\:w-\[600px\] {

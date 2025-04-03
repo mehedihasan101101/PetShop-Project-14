@@ -97,7 +97,7 @@ async function bringAllCards(pet) {
                             <button class="btn-adopt btn btn-square w-17 h-11 text-[#0E7A81] disabled:bg-gray-400 disabled:text-gray-400 disabled:cursor-not-allowed ">
                                 Adopt
                             </button>
-                            <button  class=" btn-details btn btn-square w-17 h-11 text-[#0E7A81]">
+                            <button data-id="${pets.petId}"  class=" btn-details btn btn-square w-17 h-11 text-[#0E7A81]">
                                 Details
                             </button>
                         </div>
@@ -111,20 +111,7 @@ async function bringAllCards(pet) {
             }
 
 
-            //Event listener to handle data sorting
-            document.getElementById("btn-Sort-All-Data").addEventListener('click', function () {
-                if (!isSorted) {
-                    sortedArray = [...pet].sort((a, b) => b.price - a.price); //data sorted in ascending order
-                    container.innerHTML = ``;//clear the container div
-                    renderPets(sortedArray);
-                    isSorted = true;
-                }
-                else {
-                    container.innerHTML = ``;//clear the container div
-                    renderPets(originalPetsData);
-                    isSorted = false;
-                }
-            })
+
 
             //This Event Listener add like functionality to all like button.
             document.querySelectorAll(".btn-like").forEach((eachBtn, indexOfNodeLIst) => {
@@ -132,16 +119,16 @@ async function bringAllCards(pet) {
                     const likeContainer = document.getElementById("container-liked");
 
                     likeContainer.innerHTML += `
-    <div class="p-2 rounded shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)]">
-    <img class=" rounded w-full h-auto  object-cover" src="${pet[indexOfNodeLIst].image}" alt="">
-    </div>
-
-    `
+                        <div class="p-2 rounded shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)]">
+                        <img class=" rounded w-full h-auto  object-cover" src="${pet[indexOfNodeLIst].image}" alt="">
+                        </div>
+                    
+                        `
 
                 })
             })
             // function to handle modal opening and animation
-            function renderModal(containerId,waitingTime) {
+            function renderModal(containerId, waitingTime) {
                 const modalContainer = document.getElementById(containerId)
                 modalContainer.classList.remove("hidden");
 
@@ -163,8 +150,9 @@ async function bringAllCards(pet) {
                 eachBtn.addEventListener('click', () => {
 
                     eachBtn.disabled = true;
-                    eachBtn.innerText ="Adopted";
-                    renderModal("Congrats-Modal",3000); 
+                    eachBtn.innerText = "Adopted";
+
+                    renderModal("Congrats-Modal", 3000);
                     // timer
                     let count = 3; // Start count from 3
                     const timerDiv = document.getElementById("timer");
@@ -180,66 +168,88 @@ async function bringAllCards(pet) {
 
                 })
             })
-            //Render Modal of Details Page
-            document.querySelectorAll(".btn-details").forEach((eachBtn, indexOfNodeLIst)  => {
-                eachBtn.addEventListener('click', () => { 
-                    renderModal('modal-Pets-Details')
-                    const ImageId = document.getElementById("petImage");
-                    const breedId = document.getElementById("Breed");
-                    const PetNameId = document.getElementById("pet-name");
-                    const BirthId = document.getElementById("birth");
-                    const GenderId = document.getElementById("gender");
-                    const priceId = document.getElementById("price");
-                    const VaccinationId = document.getElementById("Vaccination");
-                    const DetailsId = document.getElementById("details");
-                    document.body.classList.add("overflow-hidden");
 
-                    
-                    
 
-                    individualPetPath = `https://openapi.programming-hero.com/api/peddy/pet/${pet[indexOfNodeLIst].petId}`
-                    fetch(individualPetPath)
-                    .then(response=>response.json())
-                    .then(data=>{
-                        ImageId.src = `${pet[indexOfNodeLIst].image=== null || pet[indexOfNodeLIst].image
-                        === undefined ? pet[indexOfNodeLIst].image = "Unavailable" : pet[indexOfNodeLIst].image}`
+            //this event listener handle details button through  event delegation
+            container.addEventListener("click", (event) => {
+                if (event.target.classList.contains("btn-details")) {
+                    handleDetails(event.target);
+                    document.body.classList.add("overflow-hidden")
+                }
+            });
+            //THIS FUNCTION Render Modal of Details Page
+            function handleDetails(button) {
+                renderModal('modal-Pets-Details')
+                const ImageId = document.getElementById("petImage");
+                const PetNameId = document.getElementById("pet-name");
+                const breedId = document.getElementById("Breed");
 
-                        PetNameId.innerText = `${pet[indexOfNodeLIst].pet_name=== null || pet[indexOfNodeLIst].pet_name
-                        === undefined ? pet[indexOfNodeLIst].pet_name = "Unavailable" : pet[indexOfNodeLIst].pet_name}`
+                const BirthId = document.getElementById("birth");
+                const GenderId = document.getElementById("gender");
+                const priceId = document.getElementById("price");
+                const VaccinationId = document.getElementById("Vaccination");
+                const DetailsId = document.getElementById("details");
 
-                        breedId.innerText = `${pet[indexOfNodeLIst].breed=== null || pet[indexOfNodeLIst].breed
-                        === undefined ? pet[indexOfNodeLIst].breed = "Unavailable" : pet[indexOfNodeLIst].breed}`;
 
-                        BirthId.innerText = `${pet[indexOfNodeLIst].date_of_birth=== null || pet[indexOfNodeLIst].date_of_birth
-                        === undefined ? pet[indexOfNodeLIst].date_of_birth = "Unavailable" : pet[indexOfNodeLIst].date_of_birth}`;
 
-                        GenderId.innerText = `${pet[indexOfNodeLIst].gender=== null || pet[indexOfNodeLIst].gender
-                        === undefined ? pet[indexOfNodeLIst].gender = "Unavailable" : pet[indexOfNodeLIst].gender}`;
+                const petId = button.getAttribute("data-id"); // Get the petId from the button
+                console.log(petId)
 
-                        priceId.innerText = `${pet[indexOfNodeLIst].price=== null || pet[indexOfNodeLIst].price
-                        === undefined ? "Unavailable" : pet[indexOfNodeLIst].price}`;
+                individualPetPath = `https://openapi.programming-hero.com/api/peddy/pet/${petId}`
+                console.log(individualPetPath)
+                fetch(individualPetPath)
+                    .then(response => response.json())
+                    .then(data => {
+                        ImageId.src = `${data.petData.image}`;
 
-                        DetailsId.innerText = `${pet[indexOfNodeLIst].pet_details=== null || pet[indexOfNodeLIst].pet_details
-                        === undefined ? "Unavailable" : pet[indexOfNodeLIst].pet_details}`;
+                        PetNameId.innerText = `${data.petData.pet_name === null || data.petData.pet_name === undefined ? "Unavailable" : data.petData.pet_name}`
 
-                        VaccinationId.innerText = `${pet[indexOfNodeLIst].vaccinated_status=== null || pet[indexOfNodeLIst].vaccinated_status
-                        === undefined ? "Unavailable" : pet[indexOfNodeLIst].vaccinated_status}`;
+                        breedId.innerText = `${data.petData.breed === null || data.petData.breed === undefined ? "Unavailable" : data.petData.breed}`
 
-                        
-                    }); 
+                        BirthId.innerText = `${data.petData.date_of_birth === null || data.petData.date_of_birth === undefined ? "Unavailable" : data.petData.date_of_birth}`
 
-                    
-                    document.getElementById("cancel-btn").addEventListener('click',()=>{
-                    const detailsModalContainer = document.getElementById("modal-Pets-Details");
-                    detailsModalContainer.classList.add("invisible","opacity-0");
-                    document.body.classList.remove("overflow-hidden");;
+                        GenderId.innerText = `${data.petData.gender === null || data.petData.gender === undefined ? "Unavailable" : data.petData.gender}`
+
+                        priceId.innerText = `${data.petData.price === null || data.petData.price === undefined ? "Unavailable" : data.petData.price}`
+
+                        VaccinationId.innerText = `${data.petData.vaccinated_status === null || data.petData.vaccinated_status === undefined ? "Unavailable" : data.petData.vaccinated_status}`
+
+                        DetailsId.innerText = `${data.petData.pet_details === null || data.petData.pet_details === undefined ? "Unavailable" : data.petData.pet_details}`
+
+
+                        document.getElementById("cancel-btn").addEventListener('click', () => {
+                            const detailsModalContainer = document.getElementById("modal-Pets-Details");
+                            detailsModalContainer.classList.add("invisible", "opacity-0");
+                            document.body.classList.remove("overflow-hidden");
+                            
+
+                        })
                     })
-                    
-                })
+
+
+            }
+           
+        }
+        //Event listener to handle data sorting
+        function dataSorting() {
+            document.getElementById("btn-Sort-All-Data").addEventListener('click', function () {
+                if (!isSorted) {
+                    sortedArray = [...pet].sort((a, b) => b.price - a.price); //data sorted in ascending order
+                    container.innerHTML = ``;//clear the container div
+                    renderPets(sortedArray);
+                    isSorted = true;
+                }
+                else {
+                    container.innerHTML = ``;//clear the container div
+                    renderPets(cloneOfAllPets);
+                    isSorted = false;
+                }
+
             })
         }
-        renderPets(pet);
 
+        renderPets(pet);
+        dataSorting()
     }
 
     catch (err) {
