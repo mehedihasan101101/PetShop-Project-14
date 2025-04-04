@@ -273,7 +273,7 @@ async function renderByCategory(category) {
 
             //this if condition 
             if (allDataMain.length == 0) {
-
+    
                 container.className = "";
                 container.classList.add("w-full");
                 container.innerHTML =
