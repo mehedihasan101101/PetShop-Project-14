@@ -55,37 +55,6 @@ The **PetShop Project** is a dynamic and interactive web application designed to
 
 ---
 
-## **API Integration**
-The project integrates with an external API to fetch pet data dynamically.
-
-### **Endpoints:**
-#### **Fetch All Pets:**
-- **URL:** `https://openapi.programming-hero.com/api/peddy/pets`
-- Used to fetch all pet data.
-
-#### **Fetch Pet by ID:**
-- **URL:** `https://openapi.programming-hero.com/api/peddy/pet/{petId}`
-- Used to fetch detailed information about a specific pet.
-
-#### **Fetch Pets by Category:**
-- **URL:** `https://openapi.programming-hero.com/api/peddy/category/{category}`
-- Used to fetch pets based on the selected category.
-
----
-
-## **Error Handling**
-The project ensures robust error handling by:
-- **Catching errors** during API calls.
-- Displaying **user-friendly error messages** when something goes wrong.
-- **Logging errors** for debugging purposes.
-
----
-
-## **Responsive Design**
-- The application is **fully responsive**, ensuring a seamless experience across all devices.
-- The **Pet Details Modal** is scrollable and adapts to different screen sizes, ensuring all content is visible.
-
----
 
 ## **Technologies Used**
 
